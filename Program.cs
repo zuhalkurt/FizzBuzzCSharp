@@ -6,8 +6,19 @@ namespace FizzBuzz
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
-            Console.WriteLine("The current time is " + DateTime.Now);
+            for (int i = 1; i <= 100; i++)
+            {
+                if(i % 3 == 0){
+                    Console.WriteLine("fizz");
+                }
+                if(i % 5 == 0){
+                    Console.WriteLine("buzz");
+                }
+                else{
+                    Console.WriteLine(i);
+                }
+                
+            }
         }
     }
 }
