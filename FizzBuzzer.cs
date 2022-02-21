@@ -2,6 +2,7 @@ namespace FizzBuzz {
     public class FizzBuzzer {
         public string FizzBuzz(int number){
             string output = "";
+            
             if(number % 3 == 0 && number % 11 != 0){
                     output += "Fizz";
                 }
@@ -13,6 +14,9 @@ namespace FizzBuzz {
             }
             if(number % 11 == 0){
                 output += "Bong";
+            }
+            if(number % 13 == 0){
+                output += "Fezz";
             }
             if(output == ""){
                 return number.ToString();
