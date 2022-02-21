@@ -1,27 +1,28 @@
+using FizzBuzz.Rules;
 namespace FizzBuzz {
-    public class FizzBuzzer {
-        public string FizzBuzz(int number){
-            string output = "";
-            
-            if(number % 3 == 0 && number % 11 != 0){
-                    output += "Fizz";
-                }
-            if(number % 5 == 0 && number % 11 != 0){
-                    output += "Buzz";
-                }
-            if(number % 7 == 0 && number % 5 != 0 && number % 11 != 0) {
-                output += "Bang";
+    public class FizzBuzzer 
+    {
+        public List<IRule> Rules {get; set;}
+        
+        public FizzBuzzer(List<IRule> rules)
+        {
+            Rules = rules;
+        }
+
+        public string FizzBuzz(int number)
+        {
+            List<string> output = new List<string>();
+
+            foreach (IRule rule in Rules)
+            {
+                output = rule.Apply(output, number);
             }
-            if(number % 11 == 0){
-                output += "Bong";
-            }
-            if(number % 13 == 0){
-                output += "Fezz";
-            }
-            if(output == ""){
+            if(output.Count == 0)
+            {
                 return number.ToString();
             }
-            return output;
+
+            return string.Join("", output);
         }
     }
 }

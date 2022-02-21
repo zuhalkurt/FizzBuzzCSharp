@@ -1,4 +1,5 @@
 ﻿using System;
+using FizzBuzz.Rules;
 
 namespace FizzBuzz
 {
@@ -6,10 +7,20 @@ namespace FizzBuzz
     {
         static void Main(string[] args)
         {
-            var fizzBuzzer = new FizzBuzzer();
-            for (int i = 1; i <= 300; i++)
+            var rules = new List<IRule>()
             {
-               Console.WriteLine(fizzBuzzer.FizzBuzz(i));
+                new DivisibleRule(3, "Fizz"),
+                new DivisibleRule(5, "Buzz"),
+                new DivisibleRule(7, "Bang"),
+                new DivisibleRule(13, "Fezz"),
+                new OverWriteRule(11, "Bong"),
+            };
+
+            var fizzBuzzer = new FizzBuzzer(rules);
+
+            for (int i = 1; i <= 110; i++)
+            {
+                Console.WriteLine(fizzBuzzer.FizzBuzz(i));
             }
         }
     }
